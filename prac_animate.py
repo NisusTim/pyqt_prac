@@ -3,10 +3,15 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget
 
 class MainWindow(QMainWindow):
+
   def __init__(self, parent=None):
     super().__init__(parent=parent)
     self.button = QtWidgets.QPushButton(self)
     self.button.setText("Hello World\n")
+    self.button.clicked.connect(self.BtnOnClicked)
+
+  def BtnOnClicked(self):
+    print("Button pressed.")
 
 app = None
 window = None
