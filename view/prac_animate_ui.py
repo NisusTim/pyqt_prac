@@ -13,7 +13,8 @@ class UiMainWindow(object):
     self.centralwidget.setObjectName("central_widget")
 
     self.button = QtWidgets.QPushButton(self.centralwidget)
-    self.button.setText("Hello World\n")
+    self.button.setGeometry(350, 520, 100, 40)
+    self.button.setText("Play")
     self.button.setStyleSheet("""
       /*background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0,
       stop:0 rgba(255, 0, 0, 255), stop:1 rgba(0, 0, 255, 255));*/
@@ -22,7 +23,11 @@ class UiMainWindow(object):
       border-style: solid;
       border-width: 4px;
       border-color: grey;
-      font: 32pt "Ubuntu";
+      font: 12pt "Ubuntu";
     """)
+
+    self.plot_widget = QtWidgets.QVBoxLayout(self.centralwidget)
+    self.plot_widget.setContentsMargins(50, 50, 50, 100)
+    self.plot_widget.setObjectName("plot_widget")
 
     MainWindow.setCentralWidget(self.centralwidget)

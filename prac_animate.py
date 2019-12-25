@@ -1,7 +1,8 @@
 import sys
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget
-from prac_animate_ui import UiMainWindow
+from view.prac_animate_ui import UiMainWindow
+from renderer.prac_animate_canvas import CanvasRenderer
 
 class MainWindow(QMainWindow):
 
@@ -10,12 +11,17 @@ class MainWindow(QMainWindow):
     self.Ui = UiMainWindow()
     self.Ui.SetupUi(self)
     self.ConnectSlot()
+    self.AddCanvasToWidget(self.Ui.plot_widget)
 
   def ConnectSlot(self):
     self.Ui.button.clicked.connect(self.BtnOnClicked)
 
   def BtnOnClicked(self):
     print("Button pressed.")
+
+  def AddCanvasToWidget(self, parent=None):
+    self.canvas_renderer = CanvasRenderer()
+    parent.addWidget(self.canvas_renderer)
 
 app = None
 window = None
